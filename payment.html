@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="icon" href="img/icon (1).jpeg">
+    <script src="https://kit.fontawesome.com/27e6a2b710.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/payment.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="notification">Complete Your Purchase</div>
+        </div>
+    </header>
+
+    <section class="content">
+        <div class="container"></div>
+
+        <div class="details shadow">
+            <div class="details__item" id="cartItemsEl"></div>
+            <p id="subtotalEl"></p>
+        </div>
+
+     
+        <div class="container">
+            <div class="payment">
+                <div class="payment__title">Payment Method</div>
+                <div class="payment__types">
+                    <div class="payment__type payment__type--cc active" onclick="showCreditCardForm()">
+                        <i class="fa-regular fa-credit-card"> Credit card</i>
+                    </div>
+                    <div class="payment__type payment__type--paypal active" onclick="redirectTo('paypal')">
+                        <i class="fa-brands fa-paypal"> PayPal</i>
+                    </div>
+                    <div class="payment__type payment__type--sepa active" onclick="redirectTo('wallet')">
+                        <i class="fa-solid fa-wallet"> Wallet </i>
+                    </div>
+                    <div class="payment__type payment__type--invoice active" onclick="redirectTo('invoice')">
+                        <i class="icon icon-note"></i> Invoice
+                    </div>
+                </div>
+
+               
+                <div class="payment__info" style="display: none;">
+                    <div class="payment__cc">
+                        <div class="payment__title"><i class="fa-regular fa-user"></i>  &nbsp Personal Information</div>
+                        <div class="contain">
+                            <form>
+                                <div class="form__cc">
+                                    <div class="row">
+                                        <div class="field">
+                                            <div class="title">Name on Card</div>
+                                            <input type="text" id="customerName" class="input txt" required />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field">
+                                            <div class="title">Credit Card Number</div>
+                                            <input type="text" id="cardNumber" class="input txt" required />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="field small">
+                                            <div class="title">Expiry Date</div>
+                                            <select class="input ddl" id="expiryMonth" required>
+                                                <option selected>01</option>
+                                                <option>02</option>
+                                                <option>03</option>
+                                                <option>04</option>
+                                                <option>05</option>
+                                                <option>06</option>
+                                                <option>07</option>
+                                                <option>08</option>
+                                                <option>09</option>
+                                                <option>10</option>
+                                                <option>11</option>
+                                                <option>12</option>
+
+                                            </select>
+                                            <select class="input ddl" id="expiryYear" required>
+                                                <option>2025</option>
+                                                <option>2026</option>
+                                                <option>2027</option>
+                                                <option>2028</option>
+                                                <option>2029</option>
+                                            </select>
+                                        </div>
+                                        <div class="field small">
+                                            <div class="title">CVV Code</div>
+                                            <input type="text" id="cvv" class="input txt" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="payment__shipping">
+                                <div class="payment__title">
+                                    <i class="icon icon-plane"></i> Shipping Information
+                                </div>
+                                <div class="details__user">
+                                    <div class="user__name" id="shippingName">Name: <span></span></div>
+                                    <div class="user__email" id="shippingEmail">Email: <span></span></div>
+                                    <div class="user__address" >Shipping Address: <input type="text" style="display: block;" id="shippingaddress">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="actions" id="paymentForm">
+                            <button type="submit" class="btn">Place your Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+
+    </section>
+
+    
+<script>
+    function showCreditCardForm() {
+    
+        const paymentInfo = document.querySelector('.payment__info');
+        
+        
+        paymentInfo.style.display = 'block';
+    }
+
+    function redirectTo(paymentMethod) {
+        let url = '';
+
+        switch (paymentMethod) {
+            case 'paypal':
+                url = 'https://www.paypal.com';
+                break;
+            case 'wallet':
+                url = 'https://wallet.google/';
+                break;
+            case 'invoice':
+                url = 'https://yourinvoicepage.com';
+                break;
+            default:
+                console.log('Invalid payment method');
+        }
+
+       
+        if (url) {
+            window.location.href = url;
+        }
+    }
+    let cart = [];
+
+    
+    window.onload = function () {
+        document.getElementById('shippingName').children[0].innerText = localStorage.getItem('name') || 'Guest';
+        document.getElementById('shippingEmail').children[0].innerText = localStorage.getItem('email') || 'No email available';
+        document.getElementById('shippingaddress').value = localStorage.getItem('address') || ''; 
+
+        cart = JSON.parse(localStorage.getItem("CART")) || []; 
+        updateCart(cart);
+
+       
+        applyCreditCardFormat();
+    };
+
+    
+    function updateCart(cart) {
+        renderCartItems(cart);
+        renderSubtotal(cart);
+    }
+
+
+    function renderCartItems(cart) {
+        const cartItemsEl = document.getElementById('cartItemsEl');
+        if (cart.length === 0) {
+            cartItemsEl.innerHTML = `<p>No items in the cart</p>`;
+        } else {
+            cartItemsEl.innerHTML = cart.map(item => `
+            <div class="details__item">
+                <div class="item__image">
+                    <img src="${item.src}" alt="${item.description}" />
+                </div>
+                <div class="item__details">
+                    <div class="item__title">${item.description}</div>
+                    <div class="item__price">Rs. ${item.amt}</div>
+                    <div class="item__quantity">Quantity: ${item.numberOfUnits}</div>
+                </div>
+            </div>
+        `).join('');
+        }
+    }
+
+    
+    function renderSubtotal(cart) {
+        let totalPrice = 0, totalItems = 0;
+        cart.forEach((item) => {
+            totalPrice += item.amt * item.numberOfUnits;
+            totalItems += item.numberOfUnits;
+        });
+        document.getElementById('subtotalEl').innerHTML = `Total (${totalItems} items): INR ${totalPrice}`;
+    }
+
+
+    function applyCreditCardFormat() {
+        const cardNumberInput = document.getElementById('cardNumber');
+
+        cardNumberInput.addEventListener('input', function () {
+            let cardNumber = cardNumberInput.value.replace(/\D/g, ''); // Remove non-numeric characters
+            if (cardNumber.length > 16) {
+                cardNumber = cardNumber.slice(0, 16); // Limit to 16 digits
+            }
+
+          
+            const formattedCardNumber = cardNumber.replace(/(\d{4})(?=\d)/g, '$1-');
+            cardNumberInput.value = formattedCardNumber;
+        });
+    }
+
+    function generateBill() {
+    const customerName = document.getElementById('customerName').value;
+    const cardNumber = document.getElementById('cardNumber').value.replace(/-/g, ''); // Remove hyphens
+    const expiryMonth = document.getElementById('expiryMonth').value;
+    const expiryYear = document.getElementById('expiryYear').value;
+    const address = document.getElementById('shippingaddress').value;
+
+    if (!customerName || !cardNumber || !expiryMonth || !expiryYear || !address) {
+        alert("Please fill out all payment and shipping fields.");
+        return;
+    }
+
+    let billContent = `Thanks for Delivering\n`;
+    billContent += `Customer Name: ${customerName}\n`;
+    billContent += `Card Number: **** **** **** ${cardNumber.slice(-4)}\n`;
+    billContent += `Expiry Date: ${expiryMonth}/${expiryYear}\n\n`;
+    billContent += `Items Purchased:\n`;
+
+    cart.forEach(item => {
+        billContent += `${item.description} - Rs. ${item.amt} x ${item.numberOfUnits}\n`;
+    });
+
+    const totalAmount = cart.reduce((total, item) => total + item.amt * item.numberOfUnits, 0);
+    billContent += `\nTotal Amount: INR ${totalAmount}\n`;
+    billContent += `Shipping Address: ${address}\n`;
+    billContent += `Delivered Soon 😊\n`;
+
+    alert(billContent);
+
+    const email = localStorage.getItem('email') || 'No email available';
+
+    // Send the bill via email
+    fetch('http://localhost:3000/send-bill', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: email,
+            billContent: billContent
+        })
+    })
+    .then(response => response.text())
+    .then(result => {
+        console.log(result);  // Success message from the server
+        alert('Bill sent to email: ' + email);
+    })
+    .catch(error => {
+        console.error('Error sending bill:', error);
+        alert('Failed to send the bill via email');
+    });
+}
+
+  
+    document.querySelector('.actions button').addEventListener('click', function (event) {
+        event.preventDefault(); 
+
+      
+        generateBill();
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+  <link rel="icon" href="img/icon (1).jpeg">
+
+    <script src="https://kit.fontawesome.com/27e6a2b710.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/register.css">
+</head>
+
+<body>
+    <div class="overlay">
+        <form onsubmit="event.preventDefault(); register();">
+            <div class="con">
+                <header class="head-form">
+                    <h2>Register</h2>
+                    <p>Register here using your name, email, and password</p>
+                </header>
+                <br>
+                <div class="field-set">
+                    
+                    <span class="input-item">
+                        <i class="fa fa-user-circle"></i>
+                    </span>
+                    <input class="form-input" id="name" type="text" placeholder="Name" required>
+                    <br>
+                    
+                    
+                    <span class="input-item">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                    <input class="form-input" id="email" type="email" placeholder="Email" required>
+                    <br>
+    
+                    
+                    <span class="input-item">
+                        <i class="fa fa-key"></i>
+                    </span>
+                    <input class="form-input" type="password" placeholder="Password" id="pwd" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one uppercase and lowercase letter, and at least 8 or more characters" required>
+                    
+                    <span>
+                        <i class="fa fa-eye" aria-hidden="true" type="button" id="eye"></i>
+                    </span>
+                    <br>
+                    
+                    <button type="submit" class="log-in">Register</button>
+                </div>
+    
+                <div class="other">
+                    <button class="btn submits frgt-pass">Forgot Password</button>
+                    <button class="btn submits sign-up" onclick="login()">Log In
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        function register() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('pwd').value;
+    
+            fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, password })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(err => { throw new Error(err); });
+                }
+                return response.text();
+            })
+            .then(data => {
+                alert(data);
+            })
+            .catch(err => {
+                alert(err.message);
+            });
+        }
+        function login(){
+            window.location.href = 'login.html';
+        }
+    </script>
+    
+   
+</body>
+</html>

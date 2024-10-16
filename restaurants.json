@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Chinese WOK",
+    "src": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0839ff574213e6f35b3899ebf1fc597",
+    "description": "Hakka Noodles, Veg Manchurian etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=ChineseWOK"
+  },
+  {
+    "name": "Lapinoz - Pizza",
+    "src": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/qt2ojkafzprlgpdl4a4y",
+    "description": "Margherita, Veg Extravaganza, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=Lapinoz"
+  },
+  {
+    "name": "The Belgian-Waffle",
+    "src": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/5116a385bac0548e06c33c08350fbf11",
+    "description": "Classic Waffle, Chocolate Chip Waffle, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=BelgianWaffle"
+  },
+  {
+    "name": "Barbeque",
+    "src": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e2ej0ob56z47oylq9mkb",
+    "description": "Grilled Chicken, BBQ Paneer, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=Barbeque"
+  },
+  {
+    "name": "BIG - BOWL",
+    "src": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/22/deff0d02-ca1d-4ef9-9d62-b0cbeabf33d3_296658.JPG",
+    "description": "Greek Salad, Caesar Salad, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=BigBowl"
+  },
+  {
+    "name": "KFC",
+    "src": "https://static.vecteezy.com/system/resources/previews/024/693/620/original/kfc-logo-transparent-free-png.png",
+    "description": "Shrimp Cocktail, Fish Tacos, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=KFC"
+  },
+  {
+    "name": "BURGER KING",
+    "src": "https://logos-world.net/wp-content/uploads/2020/04/Burger-King-Logo-1969-1994.png",
+    "description": "Vegan Burger, Avocado Toast, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=BurgerKing"
+  },
+  {
+    "name": "MC DONALD",
+    "src": "https://logolook.net/wp-content/uploads/2021/06/McDonalds-Logo.png",
+    "description": "Tacos, Burritos, Nachos, etc.",
+    "rating": "3.9",
+    "time": "40 Mins",
+    "amt": "300",
+    "offer": "50% off | Use WELCOLME50",
+    "href": "product.html?restaurant=McDonald"
+  }
+]

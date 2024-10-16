@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bite-Buzz</title>
+    <link rel="icon" href="img/icon (1).jpeg">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Slab:wght@200;300;500&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="img/icon (1).jpeg" class="logo-img" alt="">
+            <nav class="navbar">
+                <a href="landing.html" target="_blank">Home</a>
+                <a href="#">features</a>
+                <a href="#">products</a>
+                <a href="#">categories</a>
+                <a href="#">Offers</a>
+                <a href="#">Help</a>
+            </nav>
+            <div class="icons">
+                <div class="fas fa-bars" id="menu-btn"></div>
+                <div class="fas fa-search" id="search-btn"></div>
+                <div class="fas fa-shopping-cart" id="cart-btn" style="display: none;"></div>
+                <div class="total-items-in-cart num-icon" style="display:none;">0</div>
+                <div class="fas fa-user" id="login-btn"></div>
+            </div>
+            <form action="" class="login-form">
+                <div class="container">
+                    <div class="card">
+                        <h2>Welcome</h2>
+                        <h3>Hi, <span id="name"></span></h3>
+                        <h3>Email: <span id="email"></span></h3>
+                        <div class="text-center">
+                            <button type="button" onclick="logout()" class="btn btn-primary">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </header>
+
+    <section class="home" id="home" style="overflow-x:auto;">
+        <div class="content">
+            <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/6e44fd7f1e5cd9967edfe47c10247671"
+                class="new" alt="">
+            <img src="img/ban2.webp" class="new" alt="">
+            <img src="img/ban3.jpg" class="new" alt="">
+            <img src="img/ban4.webp" class="new" alt="">
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="filter">
+            <div class="filterLeft">
+                <div class="search-box">
+                    <input type="search" id="search-box" placeholder="search here...">
+                    <label for="search-box" class="fas fa-search" id="searchBox" onclick="searchProducts()"></label>
+                </div>
+            </div>
+            <div class="filterRight">
+                <a href="#">Relevance</a>
+                <a href="#">Delivery Time</a>
+                <a href="#">Rating</a>
+                <a href="#">Cost: Low to High</a>
+                <a href="#">Cost: High to Low</a>
+                <a href="#">Filters</a>
+            </div>
+        </div>
+
+    </section>
+    <div class="list-container" id="list-container"></div>
+
+    <script src="script.js"></script>
+    
+</body>
+
+</html>
