@@ -80,12 +80,10 @@ header {
 
 /* Search Bar */
 .search {
-    display: flex;
     width: 30vw;
     align-items: center;
     justify-content: flex-start;
     border-radius: 10px;
-    background-color: white;
     padding: 5px 0;
     margin-top: 5vh;
 }
@@ -111,6 +109,7 @@ header {
 .search i {
     margin-left: 10px;
     padding-left: 10px;
+    
 }
 
 /* Section Styling */
@@ -359,5 +358,93 @@ header {
 }
 
 .modal-content .sign-up a:hover {
+    text-decoration: underline;
+}
+.search-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the search input */
+input[type="search"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+input[type="search"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+/* Search result container */
+#searchResults {
+    margin-top: 20px;
+    /* display: flex;
+    justify-content: space-between; */
+    /* background: #e4e3e3; */
+}
+#searchResults div{
+    padding: 2px 7px;
+    font-size: smaller;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: #f2f2f2;}
+
+/* Styling each restaurant result */
+.restaurant {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.restaurant:hover {
+    background-color: #f9f9f9;
+}
+
+.restaurant img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.restaurant h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.restaurant p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.restaurant a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.restaurant a:hover {
     text-decoration: underline;
 }
